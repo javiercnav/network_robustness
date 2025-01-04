@@ -246,7 +246,7 @@ perform_analysis <- function(data, strategy_label) {
       print(kruskal_result)
       
       # Post-hoc test: Pairwise Wilcoxon
-      print("Pairwise Wilcoxon Post-Hoc Test with Bonferroni Correction:")
+      print("Pairwise Wilcoxon Post-Hoc Test with FDR Correction:")
       pairwise_result <- pairwise.wilcox.test(data$AUC, data$Network, p.adjust.method = "fdr")
       print(pairwise_result)
     }
@@ -257,7 +257,7 @@ perform_analysis <- function(data, strategy_label) {
     print(kruskal_result)
     
     # Post-hoc test: Pairwise Wilcoxon
-    print("Pairwise Wilcoxon Post-Hoc Test with Bonferroni Correction:")
+    print("Pairwise Wilcoxon Post-Hoc Test with FDR:")
     pairwise_result <- pairwise.wilcox.test(data$AUC, data$Network, p.adjust.method = "fdr")
     print(pairwise_result)
   }
