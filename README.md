@@ -1,2 +1,2 @@
-# network_robustness
-Calculation of network Robustness using igraph
+# network_robustness_max_vulnerability
+Calculation of network Robustness and maximum vulnerability in R
