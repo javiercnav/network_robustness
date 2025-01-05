@@ -181,7 +181,7 @@ print(kruskal_result)
 
 # Post-hoc Dunn's test
 library(FSA)
-dunn_result <- dunnTest(AUC ~ interaction(Removed_Group, Network), data = results_long, method = "bonferroni")
+dunn_result <- dunnTest(AUC ~ interaction(Removed_Group, Network), data = results_long, method = "fdr")
 print(dunn_result)
 
 
