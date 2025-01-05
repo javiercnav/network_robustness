@@ -203,8 +203,9 @@ plot_targeted <- ggplot() +
 plot_targeted
 
 
-library(car) # For Levene's test
-library(multcomp) # For pairwise comparisons (Tukey's HSD)
+library(car)      # For Levene's test
+library(FSA)      # For Dunn's test
+library(multcomp) # For Tukey's HSD
 
 # Function to perform tests and post-hoc analyses
 perform_analysis <- function(data, strategy_label) {
@@ -245,10 +246,10 @@ perform_analysis <- function(data, strategy_label) {
       kruskal_result <- kruskal.test(AUC ~ Network, data = data)
       print(kruskal_result)
       
-      # Post-hoc test: Pairwise Wilcoxon
-      print("Pairwise Wilcoxon Post-Hoc Test with FDR Correction:")
-      pairwise_result <- pairwise.wilcox.test(data$AUC, data$Network, p.adjust.method = "fdr")
-      print(pairwise_result)
+      # Post-hoc test: Dunn's
+      print("Dunn's Post-Hoc Test with FDR Correction:")
+      dunn_result <- dunnTest(AUC ~ Network, data = data, method = "fdr")
+      print(dunn_result)
     }
   } else {
     # Perform Kruskal-Wallis Test
@@ -256,10 +257,10 @@ perform_analysis <- function(data, strategy_label) {
     kruskal_result <- kruskal.test(AUC ~ Network, data = data)
     print(kruskal_result)
     
-    # Post-hoc test: Pairwise Wilcoxon
-    print("Pairwise Wilcoxon Post-Hoc Test with FDR:")
-    pairwise_result <- pairwise.wilcox.test(data$AUC, data$Network, p.adjust.method = "fdr")
-    print(pairwise_result)
+    # Post-hoc test: Dunn's
+    print("Dunn's Post-Hoc Test with FDR Correction:")
+    dunn_result <- dunnTest(AUC ~ Network, data = data, method = "fdr")
+    print(dunn_result)
   }
 }
 
