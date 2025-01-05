@@ -247,8 +247,8 @@ perform_analysis <- function(data, strategy_label) {
       print(kruskal_result)
       
       # Post-hoc test: Dunn's
-      print("Dunn's Post-Hoc Test with FDR Correction:")
-      dunn_result <- dunnTest(AUC ~ Network, data = data, method = "fdr")
+      print("Dunn's Post-Hoc Test with BH Correction:")
+      dunn_result <- dunnTest(AUC ~ Network, data = data, method = "bh")
       print(dunn_result)
     }
   } else {
@@ -258,8 +258,8 @@ perform_analysis <- function(data, strategy_label) {
     print(kruskal_result)
     
     # Post-hoc test: Dunn's
-    print("Dunn's Post-Hoc Test with FDR Correction:")
-    dunn_result <- dunnTest(AUC ~ Network, data = data, method = "fdr")
+    print("Dunn's Post-Hoc Test with BH Correction:")
+    dunn_result <- dunnTest(AUC ~ Network, data = data, method = "bh")
     print(dunn_result)
   }
 }
